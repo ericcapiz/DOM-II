@@ -54,13 +54,24 @@ document.addEventListener('scroll', event => {
 //9 & 10 focus & blur to change nav links
 const navLinks = document.querySelectorAll('.nav-link');
 navLinks.forEach(link => {
-  link.addEventListener('focus', e => {
-    e.target.style.color = 'lime';
-    e.target.style.fontSize = '20px';
+  link.addEventListener('focus', event => {
+    event.target.style.color = 'lime';
+    event.target.style.fontSize = '20px';
+    
   });
   link.addEventListener('blur', e => {
-    e.target.style.color = 'purple';
-    e.target.style.fontSize = '15px';
+    event.target.style.color = 'purple';
+    event.target.style.fontSize = '55px';
   });
- 
+  
+});
+//stop propagation
+const welcome = document.querySelector('.intro');
+welcome.addEventListener('click', ()=>{
+    welcome.style.backgroundColor= "lime"
+});
+const welcome2 = document.querySelector('.intro p');
+welcome2.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    welcome2.textContent="stopped propagation of turning the intro div background to green"
 });
